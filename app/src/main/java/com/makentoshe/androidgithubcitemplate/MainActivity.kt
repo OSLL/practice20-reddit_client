@@ -1,4 +1,4 @@
-package com.makentoshe.androidgithubcitemplate
+package com.example.xml
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
