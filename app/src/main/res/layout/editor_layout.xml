@@ -38,5 +38,6 @@
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_add_circle_outline_24px" />
+        app:srcCompat="@drawable/ic_add_circle_outline_24px"
+        />
 </RelativeLayout>
