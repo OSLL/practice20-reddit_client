@@ -7,10 +7,24 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
         app:menu="@menu/profile_tag" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav_bar"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/frame"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
+
+    </FrameLayout>
+
 </RelativeLayout>
