@@ -37,6 +37,5 @@ class MainActivity : AppCompatActivity() {
                 fragment = ProjectsFragment()
             }
         }
-        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
-    }
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()}
 }
