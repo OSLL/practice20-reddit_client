@@ -15,7 +15,7 @@ class ProjectsFragment : Fragment {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.projects_layout, container, false)
+        var view = inflater.inflate(R.layout.my_projects_layout, container, false)
         return view
     }
 }
