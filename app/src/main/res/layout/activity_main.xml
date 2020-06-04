@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:text="Version 0.0.1 (alpha)"
         android:layout_marginBottom="80sp"
-        android:layout_marginStart="20sp"
+        android:layout_marginStart="40sp"
         android:textSize="20sp"
         android:layout_alignParentBottom="true"/>
 
@@ -111,4 +111,5 @@
         android:layout_marginBottom="0dp"
         android:layout_centerHorizontal="true"
         app:menu="@menu/profile_tag" />
+
 </RelativeLayout>
