@@ -24,6 +24,10 @@ class AccountFragment : Fragment {
             val intent = Intent(activity, SettingsActivity::class.java)
             startActivity(intent)
         }
+        view.findViewById<ImageView>(R.id.notificationButton).setOnClickListener {
+            var bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(requireActivity().supportFragmentManager, BottomSheetFragment::class.simpleName)
+        }
         return view
     }
 }
