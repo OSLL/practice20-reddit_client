@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
             fragmentSelector(it.itemId)
             return@setOnNavigationItemSelectedListener true
         }
+
     }
 
     override fun onResume() {
@@ -37,5 +38,10 @@ class MainActivity : AppCompatActivity() {
                 fragment = ProjectsFragment()
             }
         }
-        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()}
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
+    }
+    public fun setFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()
+    }
 }
+

@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.xml.MainActivity
 import com.example.xml.R
 import com.makentoshe.androidgithubcitemplate.SettingsActivity
 import kotlinx.android.synthetic.main.profile_layout.*
@@ -28,6 +30,10 @@ class AccountFragment : Fragment {
             var bottomSheetFragment = BottomSheetFragment()
             bottomSheetFragment.show(requireActivity().supportFragmentManager, BottomSheetFragment::class.simpleName)
         }
+        view.findViewById<Button>(R.id.repositoriesButton).setOnClickListener {
+            (activity as MainActivity).setFragment(RepositoriesFragment())
+        }
         return view
+
     }
 }
