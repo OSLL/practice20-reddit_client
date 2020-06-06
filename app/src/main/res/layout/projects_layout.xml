@@ -20,5 +20,6 @@
         android:background="#FFFFFF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:menu="@menu/repositories_menu"
         app:title="Projects:" />
 </RelativeLayout>

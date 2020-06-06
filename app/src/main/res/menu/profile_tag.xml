@@ -9,10 +9,11 @@
         android:title="@string/action_editor"
         android:icon="@drawable/ic_create_24px"
         app:showAsAction="always"/>
-    <item android:id="@+id/action_messager"
-        android:title="@string/action_messager"
-        android:icon="@drawable/ic_chat_24px"
-        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_repositories"
+        android:icon="@drawable/ic_view_list_24px"
+        android:title="@string/action_repositories"
+        app:showAsAction="always" />
     <item android:id="@+id/action_projects"
         android:title="@string/action_projects"
         android:icon="@drawable/ic_article_24px"

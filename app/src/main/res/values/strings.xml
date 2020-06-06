@@ -3,9 +3,9 @@
     <string name="action_profile">Profile</string>
     <string name="action_editor">Editor</string>
     <string name="action_projects">Projects</string>
-    <string name="action_messager">Messager</string>
+    <string name="action_repositories">Repositories</string>
     <string name="title_activity_settings">Settings</string>
-
+    <string name="search">Search</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
