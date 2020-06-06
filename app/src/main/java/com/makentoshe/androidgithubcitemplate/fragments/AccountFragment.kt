@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.xml.MainActivity
-import com.example.xml.R
+import com.makentoshe.androidgithubcitemplate.MainActivity
+import com.makentoshe.androidgithubcitemplate.R
 import com.makentoshe.androidgithubcitemplate.SettingsActivity
 import kotlinx.android.synthetic.main.profile_layout.*
 

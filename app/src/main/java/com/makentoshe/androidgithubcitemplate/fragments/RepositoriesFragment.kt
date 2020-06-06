@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.example.xml.R
+import com.makentoshe.androidgithubcitemplate.R
+
 
 class RepositoriesFragment: Fragment {
     constructor() : super()

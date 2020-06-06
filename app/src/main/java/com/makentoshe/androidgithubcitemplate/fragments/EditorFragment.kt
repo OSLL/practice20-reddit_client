@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.xml.R
+import com.makentoshe.androidgithubcitemplate.R
 
 class EditorFragment : Fragment {
     constructor() : super()
