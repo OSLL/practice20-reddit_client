@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 fragment = ProjectsFragment()
             }
             R.id.action_repositories ->{
-                fragment = RepositoriesFragment()
+                fragment = RepositoriesGlobalFragment()
             }
         }
         supportFragmentManager.beginTransaction().replace(R.id.frame, fragment).commit()

@@ -1,6 +1,7 @@
 package com.makentoshe.androidgithubcitemplate
 
 import com.makentoshe.androidgithubcitemplate.models.Repos
+import com.makentoshe.androidgithubcitemplate.models.SearchResult
 import com.makentoshe.androidgithubcitemplate.models.User
 import okhttp3.internal.http2.ErrorCode
 import retrofit2.Call
@@ -8,6 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Query
 
 class GithubApi {
     lateinit var api: Api
@@ -48,6 +50,23 @@ class GithubApi {
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 onUserInfoLoadCompleteListener.onFail(ERROR_CONNECTION)
+            }
+        })
+    }
+
+    fun searchRepos(query: String, onReposListLoadCompleteListener: OnReposListLoadCompleteListener){
+        api.searchRepos(query).enqueue(object : Callback<SearchResult> {
+            override fun onFailure(call: Call<SearchResult>, t: Throwable) {
+                onReposListLoadCompleteListener.onFail(ERROR_CONNECTION)
+            }
+
+            override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
+                if(response.isSuccessful && response.body() != null){
+                    if(response.body()!!.items.size > 0)
+                        onReposListLoadCompleteListener.onSuccess(response.body()!!.items)
+                    else
+                        onReposListLoadCompleteListener.onFail(ERROR_EMPTY)
+                } else onReposListLoadCompleteListener.onFail(response.code())
             }
         })
     }

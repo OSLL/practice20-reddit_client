@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,13 +20,12 @@ import com.makentoshe.androidgithubcitemplate.adapters.ReposViewAdapter
 import com.makentoshe.androidgithubcitemplate.models.Repos
 
 
-class RepositoriesFragment: Fragment {
+class RepositoriesGlobalFragment: Fragment {
     constructor() : super()
     lateinit var githubApi: GithubApi
     lateinit var  recyclerView: RecyclerView
     lateinit var adapter : ReposViewAdapter
     lateinit var progressbar: ProgressBar
-    lateinit var sp: SharedPreferences
     lateinit var infoView: TextView
 
     override fun onCreateView(
@@ -39,24 +39,33 @@ class RepositoriesFragment: Fragment {
         recyclerView = view.findViewById(R.id.reposList)
         adapter = ReposViewAdapter()
         progressbar = view.findViewById(R.id.progressBar)
-        sp = context!!.getSharedPreferences("com.makentoshe.androidgithubcitemplate_preferences", Context.MODE_PRIVATE)
         infoView = view.findViewById(R.id.infoView)
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
-        view.findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_project_search).setVisible(false)
-        loadRepos()
+
+        (view.findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_project_search).actionView as SearchView).setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    loadRepos(query!!)
+                    return true
+                }
+            })
         return view
     }
-    fun loadRepos(){
-        if(sp.getString("user", "").isNullOrEmpty())
+
+    fun loadRepos(query: String){
+        if(query.isNullOrEmpty())
             return
         progressbar.visibility = View.VISIBLE
         adapter.clear()
         infoView.visibility = View.GONE
-
-        githubApi.getUserRepos(sp.getString("user", "Wiselogias")!!, object : GithubApi.OnReposListLoadCompleteListener {
+        githubApi.searchRepos(query, object : GithubApi.OnReposListLoadCompleteListener {
             override fun onFail(errorCode: Int) {
                 Snackbar.make(progressbar, "some errors happened:" + errorCode, Snackbar.LENGTH_LONG).show()
                 progressbar.visibility = View.GONE

@@ -57,7 +57,9 @@ class AccountFragment : Fragment {
         view.findViewById<Button>(R.id.repositoriesButton).setOnClickListener {
             (activity as MainActivity).setFragment(RepositoriesFragment())
         }
-
+        view.findViewById<Button>(R.id.projectsButton).setOnClickListener {
+            Snackbar.make(it, "Sorry GitHub is working with Project's API", Snackbar.LENGTH_LONG).show()
+        }
         return view
 
     }

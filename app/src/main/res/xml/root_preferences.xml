@@ -3,7 +3,8 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="dark_theme_key"
-        android:title="Dark theme" />
+        android:title="Dark theme"
+        app:summary="You may restart the application to enable the dark theme" />
     <SwitchPreference
         android:defaultValue="false"
         android:key="notification_key"
