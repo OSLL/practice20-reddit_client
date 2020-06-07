@@ -61,7 +61,6 @@ class AccountFragment : Fragment {
             Snackbar.make(it, "Sorry GitHub is working with Project's API", Snackbar.LENGTH_LONG).show()
         }
         return view
-
     }
 
     override fun onResume() {
