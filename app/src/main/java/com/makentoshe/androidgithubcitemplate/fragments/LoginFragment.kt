@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
-import com.makentoshe.androidgithubcitemplate.MainActivity
+import com.makentoshe.androidgithubcitemplate.activities.MainActivity
 import com.makentoshe.androidgithubcitemplate.R
-import kotlinx.android.synthetic.main.login_layout.*
 
 class LoginFragment: Fragment {
     constructor() : super()

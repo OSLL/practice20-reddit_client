@@ -14,11 +14,10 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.makentoshe.androidgithubcitemplate.GithubApi
-import com.makentoshe.androidgithubcitemplate.MainActivity
+import com.makentoshe.androidgithubcitemplate.activities.MainActivity
 import com.makentoshe.androidgithubcitemplate.R
-import com.makentoshe.androidgithubcitemplate.SettingsActivity
+import com.makentoshe.androidgithubcitemplate.activities.SettingsActivity
 import com.makentoshe.androidgithubcitemplate.models.User
-import kotlinx.android.synthetic.main.profile_layout.*
 
 class AccountFragment : Fragment {
     constructor() : super()

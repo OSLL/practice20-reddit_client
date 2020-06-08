@@ -1,8 +1,10 @@
 package com.makentoshe.androidgithubcitemplate.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.makentoshe.androidgithubcitemplate.GithubApi
 import com.makentoshe.androidgithubcitemplate.R
+import com.makentoshe.androidgithubcitemplate.RecycleItemClickListener
+import com.makentoshe.androidgithubcitemplate.activities.FilesActivity
 import com.makentoshe.androidgithubcitemplate.adapters.ReposViewAdapter
 import com.makentoshe.androidgithubcitemplate.models.Repos
 
@@ -46,9 +50,31 @@ class RepositoriesFragment: Fragment {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         view.findViewById<Toolbar>(R.id.toolbar).menu.findItem(R.id.action_project_search).setVisible(false)
+
+        recyclerView.addOnItemTouchListener(RecycleItemClickListener(context, recyclerView,
+            object : RecycleItemClickListener.OnItemClickListener {
+                override fun onItemClick(view: View?, position: Int) {
+                    openRepo(adapter.getRepo(position))
+                }
+
+                override fun onLongItemClick(view: View?, position: Int) {
+
+                }
+            }))
+
         loadRepos()
         return view
     }
+
+    fun openRepo(repo: Repos){
+        val intent = Intent(activity, FilesActivity::class.java)
+
+        Log.println(Log.INFO, "LOL",repo.owner.login + " " + repo.name)
+        intent.putExtra("id",repo.id)
+        intent.putExtra("path", "")
+        startActivity(intent)
+    }
+
     fun loadRepos(){
         if(sp.getString("user", "").isNullOrEmpty())
             return

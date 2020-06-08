@@ -1,5 +1,6 @@
 package com.makentoshe.androidgithubcitemplate
 
+import com.makentoshe.androidgithubcitemplate.models.DirObject
 import com.makentoshe.androidgithubcitemplate.models.Repos
 import com.makentoshe.androidgithubcitemplate.models.SearchResult
 import com.makentoshe.androidgithubcitemplate.models.User
@@ -54,6 +55,26 @@ class GithubApi {
         })
     }
 
+    fun getContent(id: Int, path: String, onContentLoadCompleteListener: OnContentLoadCompleteListener){
+        api.getRepoContent(id, path).enqueue(object : Callback<List<DirObject>> {
+            override fun onFailure(call: Call<List<DirObject>>, t: Throwable) {
+                onContentLoadCompleteListener.onFail(ERROR_EMPTY)
+            }
+
+            override fun onResponse(
+                call: Call<List<DirObject>>,
+                response: Response<List<DirObject>>
+            ) {
+                if(response.isSuccessful && response.body() != null){
+                    if(response.body()!!.isNotEmpty())
+                        onContentLoadCompleteListener.onSuccess(response.body()!!)
+                    else
+                        onContentLoadCompleteListener.onFail(ERROR_EMPTY)
+                } else onContentLoadCompleteListener.onFail(response.code())
+            }
+        })
+    }
+
     fun searchRepos(query: String, onReposListLoadCompleteListener: OnReposListLoadCompleteListener){
         api.searchRepos(query).enqueue(object : Callback<SearchResult> {
             override fun onFailure(call: Call<SearchResult>, t: Throwable) {
@@ -77,6 +98,10 @@ class GithubApi {
     }
     interface  OnReposListLoadCompleteListener{
         fun onSuccess(repos: List<Repos>)
+        fun onFail(errorCode: Int)
+    }
+    interface OnContentLoadCompleteListener{
+        fun onSuccess(files: List<DirObject>)
         fun onFail(errorCode: Int)
     }
 }

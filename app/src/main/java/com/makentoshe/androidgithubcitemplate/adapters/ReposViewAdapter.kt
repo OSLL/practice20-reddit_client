@@ -53,8 +53,13 @@ class ReposViewAdapter: RecyclerView.Adapter<ReposViewAdapter.ReposViewHolder> {
         this.list.addAll(list)
         notifyDataSetChanged()
     }
+
     fun clear(){
         list.clear()
         notifyDataSetChanged()
+    }
+
+    fun getRepo(position: Int): Repos{
+        return list.get(position)
     }
 }
